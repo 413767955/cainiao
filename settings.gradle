@@ -1,2 +1,8 @@
 rootProject.name='cainiao5'
 include ':app'
+include ':home'
+include ':common'
+include ':course'
+include ':login'
+include ':mine'
+include ':study'
