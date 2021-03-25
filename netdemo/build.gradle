@@ -1,0 +1,18 @@
+apply plugin: 'com.android.application'
+//引用dependencies中的配置
+apply from: '../dependencies.gradle'
+
+android {
+    defaultConfig {
+        applicationId "com.cainiao.app"
+    }
+}
+
+dependencies {
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.blankj:utilcodex:1.30.6'
+}

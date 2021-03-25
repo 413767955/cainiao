@@ -1,3 +1,5 @@
+include ':netdemo'
+include ':common:netdemo'
 rootProject.name='cainiao5'
 include ':app'
 include ':home'
