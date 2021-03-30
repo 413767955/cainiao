@@ -2,6 +2,7 @@ package com.cainiao.netdemo
 
 import com.google.gson.Gson
 import okhttp3.*
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import java.io.IOException
@@ -27,13 +28,13 @@ class OkHttpApi :HttpApi {
 
     override fun get(params: Map<String, Any>, path: String, callback: IHttpCallback) {
         val url = "$baseUrl$path"
-        val urlBuilder = HttpUrl.Builder()
+        val urlBuilder:HttpUrl.Builder = url.toHttpUrl().newBuilder()
         params.forEach{entry ->
             urlBuilder.addEncodedQueryParameter(entry.key,entry.value.toString())
         }
         val request:Request = Request.Builder()
             .get()
-            .url(url)
+            .url(urlBuilder.build())
             .build()
         mClient.newCall(request).enqueue(object :Callback{
             override fun onFailure(call: Call, e: IOException) {
@@ -42,7 +43,7 @@ class OkHttpApi :HttpApi {
             }
             override fun onResponse(call: Call, response: Response) {
                 //TODO("Not yet implemented")
-                callback.onSuccess(response)
+                callback.onSuccess(response.body?.string())
             }
         })
     }

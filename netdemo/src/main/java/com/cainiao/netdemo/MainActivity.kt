@@ -16,15 +16,14 @@ class MainActivity : AppCompatActivity() {
         )
         val httpApi:HttpApi = OkHttpApi()
         httpApi.get(map,"api.php",object :IHttpCallback{
-            override fun onSuccess(data: Any) {
+            override fun onSuccess(data: Any?) {
                 //TODO("Not yet implemented")
                 LogUtils.e("${data.toString()}")
                 runOnUiThread {
                     tv_hello.text = data.toString()
                 }
             }
-
-            override fun onFailed(error: Any) {
+            override fun onFailed(error: Any?) {
                 //TODO("Not yet implemented")
                 LogUtils.e("${error.toString()}")
             }
