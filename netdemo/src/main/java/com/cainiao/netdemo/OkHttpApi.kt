@@ -14,6 +14,7 @@ class OkHttpApi :HttpApi {
         private const val TAG = "OkHttpApi"
     }
     private var baseUrl = "http://api.qingyunke.com/"
+    var maxRetry : Int = 0
 
     private val mClient: OkHttpClient = OkHttpClient.Builder()
         .callTimeout(10, TimeUnit.SECONDS) //完整请求超时时长，从发起到接收返回数据，默认值0，不限定
@@ -23,6 +24,9 @@ class OkHttpApi :HttpApi {
         .retryOnConnectionFailure(true)//重连
         .followRedirects(false)//重定向
         .cache(Cache(File("sdcard/cache","okhttp"),1024))
+        .cookieJar(LocalCookieJar())
+        //.addNetworkInterceptor(KtHttpLogInterceptor)
+        .addNetworkInterceptor(RetryInterceptor(maxRetry))
         .build()
 
 
