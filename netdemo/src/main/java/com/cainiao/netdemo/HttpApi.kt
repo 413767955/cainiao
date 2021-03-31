@@ -26,4 +26,8 @@ interface HttpApi {
 
     fun postSync(body: Any,path: String):Any ?= Any()
 
+    fun cancelRequest(tag : Any)
+
+    fun cancelAllRequest()
+
 }

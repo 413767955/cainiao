@@ -18,14 +18,14 @@ class MainActivity : AppCompatActivity() {
         httpApi.get(map,"api.php",object :IHttpCallback{
             override fun onSuccess(data: Any?) {
                 //TODO("Not yet implemented")
-                LogUtils.e("${data.toString()}")
+                LogUtils.d("${data.toString()}")
                 runOnUiThread {
                     tv_hello.text = data.toString()
                 }
             }
             override fun onFailed(error: Any?) {
                 //TODO("Not yet implemented")
-                LogUtils.e("${error.toString()}")
+                LogUtils.d("${error.toString()}")
             }
 
         })
