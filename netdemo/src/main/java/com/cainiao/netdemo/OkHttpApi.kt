@@ -1,13 +1,15 @@
 package com.cainiao.netdemo
 
 import androidx.collection.SimpleArrayMap
+import com.cainiao.netdemo.config.KtHttpLogInterceptor
+import com.cainiao.netdemo.config.LocalCookieJar
+import com.cainiao.netdemo.config.RetryInterceptor
 import com.google.gson.Gson
 import okhttp3.*
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import java.io.IOException
-import java.util.Calendar.SECOND
 import java.util.concurrent.TimeUnit
 
 class OkHttpApi :HttpApi {

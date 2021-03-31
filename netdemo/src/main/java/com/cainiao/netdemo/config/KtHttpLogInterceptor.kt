@@ -1,4 +1,4 @@
-package com.cainiao.netdemo
+package com.cainiao.netdemo.config
 
 import android.util.Log
 import okhttp3.*
@@ -160,10 +160,12 @@ class KtHttpLogInterceptor(block : (KtHttpLogInterceptor.()->Unit)?=null):Interc
     private fun logBasicRep(sb: StringBuffer, response: Response) {
         sb.appendln("响应 protocol:${response.protocol} code:${response.cacheControl} message:${response.message}")
             .appendln("响应 request Url: ${decodeUrlStr(response.request.url.toString())}")
-            .appendln("响应 sentRequestTime:${toDateTimeStr(
+            .appendln("响应 sentRequestTime:${
+                toDateTimeStr(
                 response.sentRequestAtMillis,
                 MILLIS_PATTERN
-            )} receivedResponseTime:${
+            )
+            } receivedResponseTime:${
             toDateTimeStr(
                 response.receivedResponseAtMillis,
                 MILLIS_PATTERN
