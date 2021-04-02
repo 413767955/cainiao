@@ -1,6 +1,7 @@
 package com.cainiao.netdemo
 
 import androidx.collection.SimpleArrayMap
+import com.cainiao.netdemo.config.CnInterceptor
 import com.cainiao.netdemo.config.KtHttpLogInterceptor
 import com.cainiao.netdemo.config.LocalCookieJar
 import com.cainiao.netdemo.config.RetryInterceptor
@@ -31,6 +32,7 @@ class OkHttpApi :HttpApi {
         .followRedirects(false)//重定向
         .cache(Cache(File("sdcard/cache","okhttp"),1024))
         .cookieJar(LocalCookieJar())
+        .addNetworkInterceptor(CnInterceptor())
         .addNetworkInterceptor(KtHttpLogInterceptor{
             logLevel(KtHttpLogInterceptor.LogLevel.BODY)
         })//添加网络拦截器，可以对okhttp的网络请求做拦截处理，不同于应用拦截器，这里能感知所有网络状态，比如重定向
